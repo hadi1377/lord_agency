@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 4000
 
 # Start development server (bind to all interfaces for Docker with custom port)
-CMD ["pnpm", "dev:docker"]
+CMD ["pnpm", "run", "dev:docker"]
