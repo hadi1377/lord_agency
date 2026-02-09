@@ -2,9 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ChevronRight, Search, Bell, HelpCircle, Settings, User } from 'lucide-react'
+import { ChevronRight, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 function Breadcrumbs () {
   const pathname = usePathname()
@@ -64,55 +63,8 @@ export function DashboardTopNavbar () {
           <Breadcrumbs />
         </div>
 
-        {/* Right side links and actions */}
+        {/* Right side - User menu */}
         <div className="flex items-center gap-2">
-          {/* Search */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-9 w-9"
-            aria-label="Search"
-          >
-            <Search className="h-4 w-4" />
-          </Button>
-
-          {/* Help */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-9 w-9"
-            aria-label="Help"
-          >
-            <HelpCircle className="h-4 w-4" />
-          </Button>
-
-          {/* Notifications */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative h-9 w-9"
-            aria-label="Notifications"
-          >
-            <Bell className="h-4 w-4" />
-            <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-primary"></span>
-          </Button>
-
-          {/* Settings */}
-          <Link href="/dashboard/settings">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={cn(
-                'h-9 w-9',
-                pathname === '/dashboard/settings' && 'bg-accent'
-              )}
-              aria-label="Settings"
-            >
-              <Settings className="h-4 w-4" />
-            </Button>
-          </Link>
-
-          {/* User menu */}
           <Button
             variant="ghost"
             size="icon"

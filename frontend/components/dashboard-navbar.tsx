@@ -5,44 +5,34 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   Home,
-  ChevronDown,
   User,
-  Database
+  Database,
+  LogOut
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 export function DashboardNavbar () {
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const pathname = usePathname()
 
   return (
     <aside className="flex h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar">
       {/* User Profile Section */}
       <div className="border-b border-sidebar-border p-4">
-        <button
-          onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-        >
+        <div className="flex w-full items-center gap-3 rounded-lg px-3 py-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
             <User className="h-5 w-5" />
           </div>
           <div className="flex-1">
             <div className="text-sm font-medium text-sidebar-foreground">
-              Courtney Henry
+              Hadi Ahmadzadeh
             </div>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <span className="h-2 w-2 rounded-full bg-green-500"></span>
               <span>Online</span>
             </div>
           </div>
-          <ChevronDown
-            className={cn(
-              'h-4 w-4 text-muted-foreground transition-transform',
-              isUserMenuOpen && 'rotate-180'
-            )}
-          />
-        </button>
+        </div>
       </div>
 
       {/* Main Navigation */}
@@ -77,6 +67,17 @@ export function DashboardNavbar () {
           <Database className="h-5 w-5" />
           <span className="flex-1">Programs Bulk Update</span>
         </Link>
+
+        {/* Separator */}
+        <div className="my-2 border-t border-sidebar-border"></div>
+
+        {/* Logout */}
+        <button
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+        >
+          <LogOut className="h-5 w-5 shrink-0" />
+          <span>Logout</span>
+        </button>
       </nav>
     </aside>
   )
