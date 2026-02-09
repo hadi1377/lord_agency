@@ -1,11 +1,14 @@
 import { DashboardNavbar } from '@/components/dashboard-navbar'
+import { DashboardTopNavbar } from '@/components/dashboard-top-navbar'
 
 export default function DashboardPage () {
   return (
     <div className="flex h-screen w-full">
       <DashboardNavbar />
-      <main className="flex-1 overflow-y-auto bg-background">
-        <div className="container mx-auto p-6 md:p-8">
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <DashboardTopNavbar />
+        <main className="flex-1 overflow-y-auto bg-background">
+          <div className="container mx-auto p-6 md:p-8">
           <div className="mb-8">
             <p className="mb-2 text-sm text-muted-foreground">
               Mon, July 7
@@ -27,8 +30,9 @@ export default function DashboardPage () {
               </p>
             </div>
           </div>
-        </div>
-      </main>
+          </div>
+        </main>
+      </div>
     </div>
   )
 }
