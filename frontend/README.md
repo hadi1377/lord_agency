@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lord Agency Frontend
 
-## Getting Started
+Next.js 16 application with React 19 and modern styling.
 
-First, run the development server:
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Run development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `pnpm dev` - Development server (localhost:3000)
+- `pnpm dev:docker` - Development server for Docker (0.0.0.0:4000)
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm start:docker` - Start production server in Docker
+- `pnpm lint` - Run linter
 
-## Learn More
+## Adding New Components
 
-To learn more about Next.js, take a look at the following resources:
+### UI Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use Shadcn CLI to add new UI components:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dlx shadcn@latest add [component-name]
+```
 
-## Deploy on Vercel
+### Custom Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create in `components/` directory:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+components/
+  my-component/
+    MyComponent.tsx
+    MyComponent.module.styl
+```
+
+## Styling
+
+- **Tailwind CSS** - Utility classes for layout and common styles
+- **Stylus Modules** - Component-specific complex styles
+
+Example:
+
+```tsx
+import styles from './MyComponent.module.styl'
+
+function MyComponent() {
+  return (
+    <div className={`${styles.container} flex items-center gap-4`}>
+      <p className={styles.text}>Combining Tailwind and Stylus</p>
+    </div>
+  )
+}
+```
+
+## Environment Variables
+
+Create a `.env.local` file for local environment variables:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+## Code Standards
+
+- Functional components only
+- Use hooks correctly
+- Props validation with prop-types
+- 2 space indentation
+- Single quotes
+- No semicolons
+- Early returns for error handling
+
+## Project Structure
+
+```
+app/                    # App router pages and layouts
+components/            # Reusable components
+  ui/                  # Base UI components (Shadcn)
+  [feature]/           # Feature-specific components
+lib/                   # Utilities and helpers
+public/                # Static assets
+```

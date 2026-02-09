@@ -1,16 +1,18 @@
 FROM node:20-alpine
 
-# Install pnpm
-RUN npm install -g pnpm
+# Enable Corepack for Yarn version management
+RUN corepack enable
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package.json pnpm-lock.yaml* ./
+# Copy and set up entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
-# Install dependencies
-RUN pnpm install
+# Copy package files
+COPY package.json yarn.lock* ./
 
 # Copy source code
 COPY . .
@@ -19,4 +21,4 @@ COPY . .
 EXPOSE 4000
 
 # Start development server (bind to all interfaces for Docker with custom port)
-CMD ["pnpm", "run", "dev:docker"]
+CMD ["yarn", "run", "dev:docker"]

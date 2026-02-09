@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
-    "dev:docker": "next dev --turbo -H 0.0.0.0 -p 4000",
+    "dev": "next dev --turbopack -p 3001",
+    "dev:docker": "next dev --webpack -H 0.0.0.0 -p 4000",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "start:docker": "next start -H 0.0.0.0 -p 4000",
     "lint": "eslint"
   },

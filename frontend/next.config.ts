@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   // Enable fast refresh for hot reload
   reactStrictMode: true,
   
-  // Empty turbopack config to silence the error
-  // Turbopack handles file watching automatically with polling in Docker
+  // Use Turbopack (default in Next.js 16) for local development
+  // Empty config to silence webpack warning
   turbopack: {}
 }
 
